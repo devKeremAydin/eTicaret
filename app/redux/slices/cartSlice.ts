@@ -26,8 +26,15 @@ const cartSlice = createSlice({
       }
     },
     removeFromCart: (state, action: PayloadAction<string>) => {
-      // Ürün id'ye göre sepetteki ürünü sil
-      state.items = state.items.filter(item => item.id !== action.payload);
+      const existingProductIndex = state.items.findIndex(item => item.id === action.payload);
+
+      if (existingProductIndex >= 0 && state.items[existingProductIndex].quantity > 1) {
+        // Eğer ürün varsa ve miktar 1'den fazla ise, miktarı azalt
+        state.items[existingProductIndex].quantity -= 1;
+      } else {
+        // Miktar 1 ise, ürünü sepetten tamamen çıkar
+        state.items = state.items.filter(item => item.id !== action.payload);
+      }
     },
   },
 });

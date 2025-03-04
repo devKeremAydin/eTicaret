@@ -39,7 +39,7 @@ export default function Index() {
         <ProfileIconContainer>
           <Link href="/LogIn" asChild>
             <StyledPressable>
-              <Ionicons name="person-circle" size={32} color="#3498db"></Ionicons> 
+              <Ionicons name="person-circle" size={45} color="#3498db"></Ionicons> 
             </StyledPressable>
           </Link>
         </ProfileIconContainer>
